@@ -1,12 +1,21 @@
-import log from './pretty-log'
+// import log from './pretty-log'
 
+// BASIC OBJECT DESTRUCTURING
+// const { key1, key2, key 3} = object
 function getAverage() {
   // refactor with object destructuring
+  // Initial object
   const obj = {x: 3.6, y: 7.8, z: 4.3}
-  return Math.floor((obj.x + obj.y + obj.z) / 3.0)
+  // Each variable picked out of the object
+  const {x, y, z} = obj
+  return Math.floor((x + y + z) / 3.0)
 }
-// log(getAverage())
+// console.log(getAverage())
 
+// #################################################################### //
+
+// NESTED OBJECT DESTRUCTURING
+// const {key1, key2 : {key2a, key2b}, key3} = object
 function getAvgTemp() {
   // refactor with nested destructuring
   const weather = {
@@ -15,40 +24,69 @@ function getAvgTemp() {
     today: {max: 2.6, min: -6.3},
     tomorrow: {max: 3.2, min: -5.8},
   }
-  const maxToday = weather.today.max
-  const minToday = weather.today.min
 
-  const maxTomorrow = weather.tomorrow.max
-  const minTomorrow = weather.tomorrow.min
+  const {
+    unit,
+    today: {          // This is how you destructure
+      max: maxToday,  // nested objects inside of other
+      min: minToday,  // objects. CAN call today
+    },
+    tomorrow: {
+      max: maxTomorrow,
+      min: minTomorrow,
+    },
+    location,
+  } = weather
+
+  // const maxToday = weather.today.max
+  // const minToday = weather.today.min
+
+  // const maxTomorrow = weather.tomorrow.max
+  // const minTomorrow = weather.tomorrow.min
 
   return {
     max: (maxToday + maxTomorrow) / 2.0,
     min: (minToday + minTomorrow) / 2.0,
-    unit: weather.unit,
+    unit: unit,
   }
 }
-// log(getAvgTemp())
+// console.log(getAvgTemp())
 
+// #################################################################### //
+
+// BASIC ARRAY DESTRUCTURING
+// const [ele1, ele2, ele3] = array
 function getFirstTwo() {
   // refactor with array destructuring
   const arr = [0, 1, 2, 3, 4, 5, 6, 7]
-  const firstItem = arr[0]
-  const secondItem = arr[1]
+  const [firstItem, secondItem] = arr
+  // const firstItem = arr[0]
+  // const secondItem = arr[1]
 
   return {
     firstItem: firstItem,
     secondItem: secondItem,
   }
 }
-// log(getFirstTwo())
+// console.log(getFirstTwo())
 
+// #################################################################### //
+
+// ARRAY DESTRUCTURING OF SPECIFIC ELEMENTS
+// const [ele1, ele2, , , ele5] = arr
 function getElements() {
   // returns 1st, 2nd and last element from an array
   // refactor with skipped destructuring for arrays
   const arr = [0, 1, 2, 3, 4, 5, 6, 7]
-  const first = arr[0]
-  const second = arr[1]
-  const fifth = arr[4]
+
+  // PRE-ES6
+  // const first = arr[0]
+  // const second = arr[1]
+  // const fifth = arr[4]
+
+  // ES6+
+  // Use empty spaces in between elements to represent skipped elements
+  const [first, second, , ,fifth] = arr
 
   return {
     first: first,
@@ -56,8 +94,12 @@ function getElements() {
     fifth: fifth,
   }
 }
-// log(getElements())
+// console.log(getElements())
 
+// #################################################################### //
+
+// DESTRUCTURING NESTED ARRAYS
+// const [ ,[ele1, , ele3], [ele1, , ele3]] = array
 function getSecondItem() {
   // refactor with nested destructuring of arrays
   const food = [
@@ -65,9 +107,14 @@ function getSecondItem() {
     ['apple', 'mango', 'orange'],
     ['cookies', 'cake', 'pizza', 'chocolate'],
   ]
-  const firstItem = food[0][1]
-  const secondItem = food[1][1]
-  const thirdItem = food[2][1]
+
+  // PRE-ES6
+  // const firstItem = food[0][1]
+  // const secondItem = food[1][1]
+  // const thirdItem = food[2][1]
+
+  // ES6+
+  const [[ ,firstItem], [ ,secondItem], [ ,thirdItem]] = food
 
   return {
     first: firstItem,
@@ -75,7 +122,7 @@ function getSecondItem() {
     third: thirdItem,
   }
 }
-// log(getSecondItem())
+//console.log(getSecondItem())
 
 function nestedArrayAndObject() {
   // refactor this to a single line of destructuring...
@@ -98,7 +145,7 @@ function nestedArrayAndObject() {
   const enemyName = enemy.name
   return `${enemyName} (${enemyTitle}) is an enemy to ${protagonistName} in "${title}"`
 }
-// log(nestedArrayAndObject())
+// console.log(nestedArrayAndObject())
 
 function defaultValues() {
   const bench = {type: 'Piano', adjustable: false}
@@ -109,7 +156,7 @@ function defaultValues() {
     return 4
   }
 }
-// log(defaultValues())
+// console.log(defaultValues())
 
 function ontoAnObject() {
   // refactor this to destructuring
@@ -121,7 +168,7 @@ function ontoAnObject() {
   object.rest = array.slice(3)
   return object
 }
-// log(ontoAnObject())
+// console.log(ontoAnObject())
 
 /*
 
