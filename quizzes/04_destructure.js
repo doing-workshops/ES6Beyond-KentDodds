@@ -27,14 +27,12 @@ function getAvgTemp() {
 
   const {
     unit,
-    today: {          // This is how you destructure
-      max: maxToday,  // nested objects inside of other
-      min: minToday,  // objects. CAN call today
+    today: {
+      // This is how you destructure
+      max: maxToday, // nested objects inside of other
+      min: minToday, // objects. CAN call today
     },
-    tomorrow: {
-      max: maxTomorrow,
-      min: minTomorrow,
-    },
+    tomorrow: {max: maxTomorrow, min: minTomorrow},
     location,
   } = weather
 
@@ -86,7 +84,7 @@ function getElements() {
 
   // ES6+
   // Use empty spaces in between elements to represent skipped elements
-  const [first, second, , ,fifth] = arr
+  const [first, second, , , fifth] = arr
 
   return {
     first: first,
@@ -114,7 +112,7 @@ function getSecondItem() {
   // const thirdItem = food[2][1]
 
   // ES6+
-  const [[ ,firstItem], [ ,secondItem], [ ,thirdItem]] = food
+  const [[, firstItem], [, secondItem], [, thirdItem]] = food
 
   return {
     first: firstItem,
