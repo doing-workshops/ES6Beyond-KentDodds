@@ -80,7 +80,7 @@ test('can create a custom iterator with a generator', () => {
 
 //////// Elaboration & Feedback /////////
 /*
-http://ws.kcd.im/?ws=ES6+and+Beyond&e=Iterators&em=no.trbl.2.u@gmail.com
+http://ws.kcd.im/?ws=ES6+and+Beyond&e=Iterators&em=
 */
 test('I submitted my elaboration and feedback', () => {
   const submitted = false // change this when you've submitted!
